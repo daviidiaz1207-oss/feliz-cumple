@@ -58,7 +58,7 @@
       background-size: 16px 16px;
       border-radius: 6px 14px 14px 6px;
       box-shadow: inset 20px 0 30px rgba(0,0,0,0.08), 0 10px 25px rgba(0,0,0,0.5);
-      padding: 30px 24px;
+      padding: 26px 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -73,7 +73,7 @@
       transform: rotateY(-180deg);
     }
 
-    /* Portada con enredaderas B&W y rosas rojas */
+    /* PORTADA CON TUS ESQUINERAS */
     .page-cover {
       background: #14100e;
       color: #dfcaa2;
@@ -86,37 +86,29 @@
       overflow: hidden;
     }
 
-    .page-cover::before {
-      content: "";
+    .corner-decoration-top {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      border: 12px solid transparent;
-      border-image: linear-gradient(to bottom, #555, #222) 1;
-      background-image: 
-        radial-gradient(circle, #ff1a40 4px, transparent 5px),
-        radial-gradient(circle, #e60026 3px, transparent 4px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 40px 40px, 60px 60px, 20px 20px, 20px 20px;
-      background-position: 5px 5px, 25px 25px, 0 0, 0 0;
-      opacity: 0.35;
+      top: 0;
+      left: 0;
+      width: 130px;
       pointer-events: none;
+      z-index: 3;
+      opacity: 0.95;
     }
 
-    .corner-vines {
+    .corner-decoration-bottom {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
+      bottom: 0;
+      right: 0;
+      width: 130px;
       pointer-events: none;
-      background-image: radial-gradient(circle, #c9184a 5px, transparent 6px), radial-gradient(circle, #ff4d6d 3px, transparent 4px);
-      background-size: 80px 80px;
-      background-position: top left, bottom right;
-      opacity: 0.6;
+      z-index: 3;
+      opacity: 0.95;
+      transform: rotate(180deg);
     }
 
     .cover-border {
-      border: 1px solid #8c6d36;
+      border: 1px solid #c2a66e;
       padding: 25px 15px;
       height: 100%;
       display: flex;
@@ -126,28 +118,29 @@
       border-radius: 2px;
       position: relative;
       z-index: 2;
-      background: rgba(20, 16, 14, 0.85);
+      background: rgba(20, 16, 14, 0.65);
     }
 
     .medieval-title {
       font-family: 'UnifrakturMaguntia', cursive;
-      font-size: 2.4rem;
+      font-size: 2.3rem;
       color: #f3dfae;
       line-height: 1.1;
       margin-bottom: 8px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
     }
 
     .medieval-subtitle {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 2px;
-      color: #d1b47b;
+      color: #ebd7a8;
       margin-top: 8px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
     }
 
     .page-number {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-align: center;
       color: #8c7d70;
       font-style: italic;
@@ -155,18 +148,18 @@
 
     .chapter-header {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #5c1d1d;
       border-bottom: 1px solid #d8cdb9;
-      padding-bottom: 6px;
-      margin-bottom: 14px;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
       text-align: center;
       font-weight: bold;
     }
 
     .content {
-      font-size: 0.93rem;
-      line-height: 1.65;
+      font-size: 0.88rem;
+      line-height: 1.55;
       color: #2c2522;
       flex-grow: 1;
       display: flex;
@@ -177,22 +170,24 @@
     .quote-box {
       font-style: italic;
       background: #f0e6d2;
-      padding: 12px;
+      padding: 10px 12px;
       border-left: 3px solid #8c6d36;
-      margin: 14px 0;
-      font-size: 0.88rem;
+      margin: 10px 0;
+      font-size: 0.84rem;
     }
 
     .swipe-hint {
       position: absolute;
-      bottom: 15px;
+      bottom: 12px;
       left: 0;
       right: 0;
       text-align: center;
-      color: #d1b47b;
-      font-size: 0.75rem;
+      color: #f3dfae;
+      font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      z-index: 4;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
       animation: pulse 2s infinite;
     }
 
@@ -208,51 +203,64 @@
   <div class="book-container" id="bookContainer">
     <div class="book">
       
-      <!-- PÁGINA 4 (CONTRATAPA) -->
+      <!-- PÁGINA 4 (CAPÍTULO FINAL) -->
       <div class="page" style="z-index: 1;">
         <div class="chapter-header">Capítulo Final</div>
         <div class="content" style="text-align: center;">
-          <p style="font-size: 1.3rem; margin-bottom: 14px;">🌹 🕯️ 🌹</p>
-          <p>Gracias por compartir tus años conmigo, por cada instante y por ser esa hermosa luz en mi vida. Que tus metas florezcan siempre.</p>
-          <br>
-          <p style="font-weight: bold; color: #5c1d1d; font-size: 1.1rem;">¡Feliz Cumpleaños, Yeuu!</p>
-          <p style="font-size: 0.85rem; color: #736353; margin-top: 6px;">Te quiero muchísimo, mi blanquita.</p>
+          <p style="font-size: 1.1rem; margin-bottom: 8px;">🌹 🕯️ 🌹</p>
+          <p style="font-size: 0.85rem;">Que tus 21 años hoy te traigan tranquilidad, cosas bonitas y todo eso que tanto has soñado y que me has contado.</p>
+          <p style="margin-top: 6px; font-size: 0.85rem;">Nunca dejes de escribir, de leer y de ser tú misma.</p>
+          <p style="margin-top: 8px; font-weight: bold; color: #5c1d1d; font-size: 0.95rem;">¡Feliz cumpleaños, mi niña!</p>
+          <p style="font-size: 0.82rem; color: #736353; margin-top: 4px;">Te quiero muchísimo, mi blanquita.<br><em>Con todo mi cariño, Jeffri.</em></p>
         </div>
         <div class="page-number">— Fin del Manuscrito —</div>
       </div>
 
       <!-- PÁGINA 3 -->
       <div class="page" style="z-index: 2;">
-        <div class="chapter-header">Capítulo II</div>
+        <div class="chapter-header">Capítulo III</div>
         <div class="content">
-          <p>Admiro profundamente tu inteligencia, la lucidez con la que interpretas el mundo y esa pasión inmensa que le entregas a las letras.</p>
-          <div class="quote-box">
-            "Hay almas que están hechas de versos y silencios hermosos; la tuya es, sin duda, una de ellas."
-          </div>
-          <p>Deseo con el alma que alcances cada uno de tus sueños y que este año esté lleno de momentos inolvidables.</p>
+          <p style="font-size: 0.86rem;">Gracias por dejarme compartir unos años de tu vida conmigo, por los días buenos, por todo lo que hemos compartido y por todo lo que nos falta por hacer y disfrutar.</p>
+          <p style="margin-top: 6px; font-size: 0.86rem;">Porque de eso se trata la vida: de vivirla y gozarla.</p>
+          <p style="margin-top: 6px; font-size: 0.86rem;">Me hiciste mejor persona, y sé que siempre viviré agradecido contigo por ello.</p>
         </div>
-        <div class="page-number">— Página 2 —</div>
+        <div class="page-number">— Página 3 —</div>
       </div>
 
       <!-- PÁGINA 2 -->
       <div class="page" style="z-index: 3;">
+        <div class="chapter-header">Capítulo II</div>
+        <div class="content">
+          <p style="font-size: 0.85rem;">Me encanta cómo piensas, la persona que eres, cómo tratas a los demás, cómo defiendes lo que te importa y la manera tan tuya que tienes de entender el mundo.</p>
+          <div class="quote-box">
+            "Hay personas que se leen despacio porque en cada línea hay algo bonito. Tú eres una de ellas."
+          </div>
+          <p style="font-size: 0.85rem;">Estoy muy orgulloso de ti, de todo lo que has logrado, de lo que has aguantado sin quejarte y de la mujer en la que te estás convirtiendo.</p>
+        </div>
+        <div class="page-number">— Página 2 —</div>
+      </div>
+
+      <!-- PÁGINA 1 (CAPÍTULO I) -->
+      <div class="page" style="z-index: 4;">
         <div class="chapter-header">Capítulo I</div>
         <div class="content">
-          <p>Hoy no es un día cualquiera. Es el cumpleaños de una chica increíblemente inteligente, con una mente fascinante para la historia y la literatura.</p>
+          <p style="font-size: 0.86rem;">No es un día cualquiera; hoy cumples <strong>21 años</strong>. Quise darte este pequeño detalle pensando en ti, en lo que estudias y en lo mucho que amas la literatura.</p>
           <br>
-          <p>Mi hermosa blanquita está cumpliendo hoy <strong>21 años</strong>, dando inicio a una etapa llena de horizontes maravillosos.</p>
+          <p style="font-size: 0.86rem;">Un pequeño rincón para recordarte y conectarlo con todo ese universo de letras que llevas dentro.</p>
         </div>
         <div class="page-number">— Página 1 —</div>
       </div>
 
-      <!-- PÁGINA 1 (PORTADA) -->
-      <div class="page page-cover" style="z-index: 4;">
-        <div class="corner-vines"></div>
+      <!-- PORTADA (PÁGINA 0) -->
+      <div class="page page-cover" style="z-index: 5;">
+        <img src="rosa.jpg" class="corner-decoration-top" alt="Esquinera de rosas">
+        <img src="rosa.jpg" class="corner-decoration-bottom" alt="Esquinera de rosas">
+
         <div class="cover-border">
-          <div style="font-size: 2rem; margin-bottom: 5px;">🥀</div>
-          <div class="medieval-title">fELIZ CUMPLE YEUU</div>
+          <div style="font-size: 1.8rem; margin-bottom: 4px;">🥀</div>
+          <div class="medieval-title">Feliz Cumpleaños</div>
           <div class="medieval-subtitle">Un pequeño homenaje a tus letras</div>
-          <p style="margin-top: 35px; font-size: 0.75rem; color: #d1b47b; letter-spacing: 2px;">XXI Primaveras</p>
+          <p style="margin-top: 25px; font-size: 0.72rem; color: #f3dfae; letter-spacing: 2px;">21 AÑOS</p>
         </div>
         <div class="swipe-hint">Desliza para abrir ➔</div>
       </div>
