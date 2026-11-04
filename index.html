@@ -6,7 +6,7 @@
   <title>Feliz Cumpleaños 📚</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&family=UnifrakturMaguntia&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=UnifrakturMaguntia&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -29,10 +29,15 @@
     .book-container {
       width: 90vw;
       max-width: 380px;
-      height: 75vh;
-      max-height: 580px;
+      height: 78vh;
+      max-height: 600px;
       position: relative;
       perspective: 1500px;
+      cursor: grab;
+    }
+
+    .book-container:active {
+      cursor: grabbing;
     }
 
     .book {
@@ -53,7 +58,7 @@
       background-size: 16px 16px;
       border-radius: 6px 14px 14px 6px;
       box-shadow: inset 20px 0 30px rgba(0,0,0,0.08), 0 10px 25px rgba(0,0,0,0.5);
-      padding: 28px 22px;
+      padding: 30px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -68,45 +73,77 @@
       transform: rotateY(-180deg);
     }
 
-    /* Portada Medieval / Gótica */
+    /* Portada con enredaderas B&W y rosas rojas */
     .page-cover {
-      background: #1c1411;
-      background-image: radial-gradient(#2d221c 1px, transparent 0);
-      background-size: 18px 18px;
+      background: #14100e;
       color: #dfcaa2;
-      border-left: 6px solid #0d0908;
+      border-left: 6px solid #090605;
       text-align: center;
       justify-content: center;
       gap: 15px;
       border: 3px solid #8c6d36;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-cover::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border: 12px solid transparent;
+      border-image: linear-gradient(to bottom, #555, #222) 1;
+      background-image: 
+        radial-gradient(circle, #ff1a40 4px, transparent 5px),
+        radial-gradient(circle, #e60026 3px, transparent 4px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px, 60px 60px, 20px 20px, 20px 20px;
+      background-position: 5px 5px, 25px 25px, 0 0, 0 0;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .corner-vines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, #c9184a 5px, transparent 6px), radial-gradient(circle, #ff4d6d 3px, transparent 4px);
+      background-size: 80px 80px;
+      background-position: top left, bottom right;
+      opacity: 0.6;
     }
 
     .cover-border {
       border: 1px solid #8c6d36;
-      padding: 25px 12px;
+      padding: 25px 15px;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       border-radius: 2px;
+      position: relative;
+      z-index: 2;
+      background: rgba(20, 16, 14, 0.85);
     }
 
     .medieval-title {
       font-family: 'UnifrakturMaguntia', cursive;
-      font-size: 2.3rem;
-      color: #f1d79e;
+      font-size: 2.4rem;
+      color: #f3dfae;
       line-height: 1.1;
-      margin-bottom: 5px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      margin-bottom: 8px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
     }
 
     .medieval-subtitle {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 2px;
-      color: #c2a66e;
-      margin-top: 10px;
+      color: #d1b47b;
+      margin-top: 8px;
     }
 
     .page-number {
@@ -122,14 +159,14 @@
       color: #5c1d1d;
       border-bottom: 1px solid #d8cdb9;
       padding-bottom: 6px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       text-align: center;
       font-weight: bold;
     }
 
     .content {
-      font-size: 0.92rem;
-      line-height: 1.6;
+      font-size: 0.93rem;
+      line-height: 1.65;
       color: #2c2522;
       flex-grow: 1;
       display: flex;
@@ -142,40 +179,27 @@
       background: #f0e6d2;
       padding: 12px;
       border-left: 3px solid #8c6d36;
-      margin: 12px 0;
+      margin: 14px 0;
       font-size: 0.88rem;
     }
 
-    .controls {
-      margin-top: 22px;
-      display: flex;
-      gap: 20px;
-      align-items: center;
+    .swipe-hint {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #d1b47b;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: pulse 2s infinite;
     }
 
-    .btn {
-      background: #8c6d36;
-      color: #1c1411;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-family: 'Lora', serif;
-      font-weight: bold;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background 0.3s;
-    }
-
-    .btn:active {
-      transform: scale(0.96);
-    }
-
-    .hint {
-      color: #9c8a77;
-      font-size: 0.8rem;
-      margin-top: 8px;
-      font-style: italic;
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
     }
   </style>
 </head>
@@ -188,11 +212,11 @@
       <div class="page" style="z-index: 1;">
         <div class="chapter-header">Capítulo Final</div>
         <div class="content" style="text-align: center;">
-          <p style="font-size: 1.2rem; margin-bottom: 12px;">⚜️ 🕯️ ⚜️</p>
-          <p>Que en este nuevo año de vida, cada una de tus metas se haga realidad y la felicidad te acompañe en cada paso.</p>
+          <p style="font-size: 1.3rem; margin-bottom: 14px;">🌹 🕯️ 🌹</p>
+          <p>Gracias por compartir tus años conmigo, por cada instante y por ser esa hermosa luz en mi vida. Que tus metas florezcan siempre.</p>
           <br>
-          <p style="font-weight: bold; color: #5c1d1d; font-size: 1.05rem;">¡Feliz Cumpleaños, Yeuu!</p>
-          <p style="font-size: 0.85rem; color: #736353; margin-top: 5px;">Con todo mi amor.</p>
+          <p style="font-weight: bold; color: #5c1d1d; font-size: 1.1rem;">¡Feliz Cumpleaños, Yeuu!</p>
+          <p style="font-size: 0.85rem; color: #736353; margin-top: 6px;">Te quiero muchísimo, mi blanquita.</p>
         </div>
         <div class="page-number">— Fin del Manuscrito —</div>
       </div>
@@ -201,49 +225,43 @@
       <div class="page" style="z-index: 2;">
         <div class="chapter-header">Capítulo II</div>
         <div class="content">
-          <p>Adoro tu esencia, tu inteligencia y la forma tan bonita en la que ves el mundo. Eres una persona sumamente especial.</p>
+          <p>Admiro profundamente tu inteligencia, la lucidez con la que interpretas el mundo y esa pasión inmensa que le entregas a las letras.</p>
           <div class="quote-box">
-            "Que tus sueños sean tan grandes como tu pasión por las letras y tu hermoso corazón."
+            "Hay almas que están hechas de versos y silencios hermosos; la tuya es, sin duda, una de ellas."
           </div>
-          <p>Deseo con el alma que cumplas cada uno de tus sueños y que este año esté repleto de momentos inolvidables.</p>
+          <p>Deseo con el alma que alcances cada uno de tus sueños y que este año esté lleno de momentos inolvidables.</p>
         </div>
-        <div class="page-number">— Página 3 —</div>
+        <div class="page-number">— Página 2 —</div>
       </div>
 
       <!-- PÁGINA 2 -->
       <div class="page" style="z-index: 3;">
         <div class="chapter-header">Capítulo I</div>
         <div class="content">
-          <p>Hoy el mundo celebra la vida de una niña blanquita muy especial. Estás cumpliendo nada menos que <strong>21 años</strong>.</p>
+          <p>Hoy no es un día cualquiera. Es el cumpleaños de una chica increíblemente inteligente, con una mente fascinante para la historia y la literatura.</p>
           <br>
-          <p>Para alguien que estudia literatura y comprende el valor de cada palabra, quise escribir este pequeño refugio interactivo solo para ti.</p>
+          <p>Mi hermosa blanquita está cumpliendo hoy <strong>21 años</strong>, dando inicio a una etapa llena de horizontes maravillosos.</p>
         </div>
-        <div class="page-number">— Página 2 —</div>
+        <div class="page-number">— Página 1 —</div>
       </div>
 
-      <!-- PÁGINA 1 (PORTADA MEDIEVAL) -->
+      <!-- PÁGINA 1 (PORTADA) -->
       <div class="page page-cover" style="z-index: 4;">
+        <div class="corner-vines"></div>
         <div class="cover-border">
-          <div style="font-size: 2.2rem; margin-bottom: 5px;">📜</div>
+          <div style="font-size: 2rem; margin-bottom: 5px;">🥀</div>
           <div class="medieval-title">Crónicas de Yeuu</div>
-          <div class="medieval-subtitle">XXI Primaveras</div>
-          <p style="margin-top: 35px; font-size: 0.75rem; color: #c2a66e; letter-spacing: 3px;">TOCA PARA ABRIR</p>
+          <div class="medieval-subtitle">Un pequeño homenaje a tus letras</div>
+          <p style="margin-top: 35px; font-size: 0.75rem; color: #d1b47b; letter-spacing: 2px;">XXI Primaveras</p>
         </div>
+        <div class="swipe-hint">Desliza para abrir ➔</div>
       </div>
 
     </div>
   </div>
 
-  <div class="controls">
-    <button class="btn" id="prevBtn">⬅ Anterior</button>
-    <button class="btn" id="nextBtn">Siguiente ➡</button>
-  </div>
-  <div class="hint">Desliza con el dedo o usa los botones</div>
-
   <script>
     const pages = document.querySelectorAll('.page');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
     const bookContainer = document.getElementById('bookContainer');
 
     let currentPage = 0;
@@ -260,40 +278,27 @@
       });
     }
 
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < totalPages - 1) {
-        currentPage++;
-        updatePages();
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 0) {
-        currentPage--;
-        updatePages();
-      }
-    });
-
     let touchStartX = 0;
     let touchEndX = 0;
 
     bookContainer.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
-    }, false);
+    }, {passive: true});
 
     bookContainer.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
-    }, false);
+    }, {passive: true});
 
     function handleSwipe() {
-      if (touchStartX - touchEndX > 40) {
+      const swipeThreshold = 35;
+      if (touchStartX - touchEndX > swipeThreshold) {
         if (currentPage < totalPages - 1) {
           currentPage++;
           updatePages();
         }
       }
-      if (touchEndX - touchStartX > 40) {
+      if (touchEndX - touchStartX > swipeThreshold) {
         if (currentPage > 0) {
           currentPage--;
           updatePages();
