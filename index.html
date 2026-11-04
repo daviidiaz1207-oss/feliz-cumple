@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños 📚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #1a1614;
+      font-family: 'Lora', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #2b2622;
+    }
+
+    .book-container {
+      width: 90vw;
+      max-width: 380px;
+      height: 75vh;
+      max-height: 580px;
+      position: relative;
+      perspective: 1500px;
+    }
+
+    .book {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fdfbf7;
+      background-image: radial-gradient(#e6ded2 1px, transparent 0);
+      background-size: 16px 16px;
+      border-radius: 8px 16px 16px 8px;
+      box-shadow: inset 20px 0 30px rgba(0,0,0,0.06), 0 10px 25px rgba(0,0,0,0.4);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform-origin: left center;
+      transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), z-index 0s 0.4s;
+      backface-visibility: hidden;
+      user-select: none;
+      border-left: 4px solid #7d2626;
+    }
+
+    .page.flipped {
+      transform: rotateY(-180deg);
+    }
+
+    /* Portada */
+    .page-cover {
+      background: #2c1a1d;
+      background-image: radial-gradient(#42282c 1px, transparent 0);
+      background-size: 20px 20px;
+      color: #f4e8d1;
+      border-left: 6px solid #1a0f11;
+      text-align: center;
+      justify-content: center;
+      gap: 20px;
+      border: 2px solid #b89758;
+    }
+
+    .cover-border {
+      border: 1px solid #b89758;
+      padding: 30px 15px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: #e5c378;
+      margin-bottom: 10px;
+    }
+
+    .cover-subtitle {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #d1c2a5;
+    }
+
+    .page-number {
+      font-size: 0.8rem;
+      text-align: center;
+      color: #8c7d70;
+      font-style: italic;
+    }
+
+    .chapter-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #7d2626;
+      border-bottom: 1px solid #d8cdb9;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .content {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #362f2d;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .quote-box {
+      font-style: italic;
+      background: #f4eee3;
+      padding: 14px;
+      border-left: 3px solid #b89758;
+      margin: 15px 0;
+      font-size: 0.9rem;
+    }
+
+    .controls {
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn {
+      background: #b89758;
+      color: #1a1614;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-family: 'Lora', serif;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .hint {
+      color: #a39585;
+      font-size: 0.8rem;
+      margin-top: 8px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book-container" id="bookContainer">
+    <div class="book">
+      
+      <!-- PÁGINA 4 (CONTRATAPA) -->
+      <div class="page" style="z-index: 1;">
+        <div class="chapter-header">Capítulo Final</div>
+        <div class="content" style="text-align: center;">
+          <p style="font-size: 1.1rem; margin-bottom: 15px;">✨ 🎂 ✨</p>
+          <p>Que este nuevo año de vida esté lleno de lecturas inolvidables, grandes historias y momentos increíbles.</p>
+          <br>
+          <p style="font-weight: bold; color: #7d2626;">¡Feliz Cumpleaños!</p>
+        </div>
+        <div class="page-number">— Fin —</div>
+      </div>
+
+      <!-- PÁGINA 3 -->
+      <div class="page" style="z-index: 2;">
+        <div class="chapter-header">Capítulo II</div>
+        <div class="content">
+          <p>Admiro mucho tu dedicación, tu forma de ver las cosas y la empatía con la que leees el mundo y a quienes te rodean.</p>
+          <div class="quote-box">
+            "Hay libros que nos cambian la forma de ver la vida, y personas que cambian la forma en que leemos el mundo."
+          </div>
+          <p>Gracias por ser una persona tan especial. Deseo que este día lo disfrutes al máximo.</p>
+        </div>
+        <div class="page-number">— Página 2 —</div>
+      </div>
+
+      <!-- PÁGINA 2 -->
+      <div class="page" style="z-index: 3;">
+        <div class="chapter-header">Capítulo I</div>
+        <div class="content">
+          <p>Hoy no es un día cualquiera. Es el cumpleaños de alguien con una mente apasionada por las palabras, las historias y las letras.</p>
+          <br>
+          <p>Quería darte un detalle diferente, algo que uniera el arte de la literatura con un toque especial hecho a medida para ti.</p>
+        </div>
+        <div class="page-number">— Página 1 —</div>
+      </div>
+
+      <!-- PÁGINA 1 (PORTADA) -->
+      <div class="page page-cover" style="z-index: 4;">
+        <div class="cover-border">
+          <div style="font-size: 2rem; margin-bottom: 10px;">📖</div>
+          <div class="cover-title">Edición Especial</div>
+          <div class="cover-subtitle">Un pequeño homenaje en tus letras</div>
+          <p style="margin-top: 30px; font-size: 0.8rem; color: #b89758; letter-spacing: 2px;">TOCA PARA ABRIR</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="prevBtn">⬅ Anterior</button>
+    <button class="btn" id="nextBtn">Siguiente ➡</button>
+  </div>
+  <div class="hint">Desliza con el dedo o usa los botones</div>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const bookContainer = document.getElementById('bookContainer');
+
+    let currentPage = 0;
+    const totalPages = pages.length;
+
+    function updatePages() {
+      pages.forEach((page, index) => {
+        const pageIndexFromTop = totalPages - 1 - index;
+        if (pageIndexFromTop < currentPage) {
+          page.classList.add('flipped');
+        } else {
+          page.classList.remove('flipped');
+        }
+      });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        updatePages();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePages();
+      }
+    });
+
+    // Soporte para deslizar en el celular (Touch Swipe)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    bookContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    bookContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      if (touchStartX - touchEndX > 40) {
+        // Swipe izquierda -> Siguiente página
+        if (currentPage < totalPages - 1) {
+          currentPage++;
+          updatePages();
+        }
+      }
+      if (touchEndX - touchStartX > 40) {
+        // Swipe derecha -> Página anterior
+        if (currentPage > 0) {
+          currentPage--;
+          updatePages();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
